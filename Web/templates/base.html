@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
+    {% block my_css %}{% endblock %}
+<!--	<link rel="stylesheet" href="static/css/menu.css">-->
+    <link rel="stylesheet" type="text/css" media="screen" href="static/css/layout1.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="static/css/dock.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="static/css/stack.css">
+
+    <noscript>
+        <style type="text/css">
+			#dock { top: -32px; }
+			a.dock-item { position: relative; float: left; margin-right: 10px; }
+			.dock-item span { display: block; }
+			.stack { top: 0; }
+			.stack ul li { position: relative; }
+
+        </style>
+    </noscript>
+    <script type="text/javascript" src="static/js/jquery.js"></script>
+    <script type="text/javascript" src="static/js/fisheye-iutil.min.js"></script>
+    <script type="text/javascript" src="static/js/dock-example1.js"></script>
+    <script type="text/javascript" src="static/js/stack-1.js"></script>
+
+</head>
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<body>
+<div class="wrap background">
+    <div id="header">
+        <div id="logo">
+            <a>Fate Grand Order<br/>Automation</a>
+            <h2 id="slogan">{% block sub_title %}{% endblock %}</h2>
+        </div>
+
+        <!--			<ul id="feature_menu">-->
+        <!--				<li><a class="current" href="#">DID YOU KNOW...</a></li>-->
+        <!--				<li><a href="#">ON THIS DAY</a></li>-->
+        <!--				<li><a href="#">FEATURED CONTENT</a></li>-->
+        <!--			</ul>-->
+
+        <div id="feature">
+            <img src="static/images/fgo/FGO_Title.png" alt="Featured"/>
+        </div>
+    </div><!-- end div #header -->
+
+    <!-- BEGIN DOCK 1 ============================================================ -->
+    <div id="dock">
+        <div class="dock-container">
+            <a class="dock-item" href="index"><span>Index</span><img src="static/images/dock/finder.png" alt="home"/></a>
+            <a class="dock-item" href="setting"><span>Setting</span><img src="static/images/dock/configuration.png"alt="contact"/></a>
+            <a class="dock-item" href="tutorial"><span>Tutorial</span><img src="static/images/dock/tutorial.png" alt="portfolio"/></a>
+            <a class="dock-item" href="about"><span>About</span><img src="static/images/dock/about.png" alt="music"/></a>
+            <a class="dock-item" href="https://github.com/McLaren12345/FGO_Bluetooth_Assistant" target=“_blank”><span>Github</span><img src="static/images/dock/github.png" alt="video"/></a>
+            <a class="dock-item" href="https://fgo.biligame.com/" target=“_blank”><span>Bilibili</span><img src="static/images/dock/bilibili2.png" alt="bilibili"/></a>
+            <a class="dock-item" href="https://www.fgo-teamup.com/#/" target=“_blank”><span>TeamUp</span><img src="static/images/dock/team.png" alt="TeamUp"/></a>
+            <a class="dock-item" href="https://fgo.wiki/w/%E9%A6%96%E9%A1%B5" target=“_blank”><span>MoonCell</span><img src="static/images/dock/mooncell.png" alt="mooncell"/></a>
+            <a class="dock-item" href="http://bbs.nga.cn/thread.php?fid=540" target=“_blank”><span>NGA</span><img src="static/images/dock/nga2.png" alt="nga"/></a>
+            <a class="dock-item" href="https://sites.google.com/view/fgo-domus-aurea" target=“_blank”><span>効率劇場</span><img src="static/images/dock/fgo-domus-aurea2.png" alt="rss"/></a>
+        </div><!-- end div .dock-container -->
+    </div><!-- end div .dock #dock -->
+    <!-- END DOCK 1 ============================================================ -->
+
+    <div id="contentWrap">
+    {% block my_contentWrap %}{% endblock %}
+    </div><!-- end div #contentWrap -->
+</div><!-- end div .wrap -->
+
+<div id="promo">
+    <div class="wrap">
+        <div class="col">
+<!--            <img id="featured" src="static/images/featured.gif" alt="Featured Image"/>-->
+            <h2>Links</h2>
+            <p>
+                <a href="https://fgo.biligame.com/" title="Github FGO Automation" target=“_blank”>Bilibili Game Center</a><br>
+                <a href="https://fgo.wiki/w/%E9%A6%96%E9%A1%B5" title="Github FGO Automation" target=“_blank”>MoonCell</a><br>
+                <a href="http://bbs.nga.cn/thread.php?fid=540" title="Github FGO Automation" target=“_blank”>NGA</a><br>
+                <a href="https://www.bigfun.cn/forum/19/new" title="Github FGO Automation" target=“_blank”>BigFun</a>
+            </p>
+        </div>
+        <div class="col">
+            <h2>About FGO Automation</h2>
+            <p>FGO Automation offers you some functionalities to handle with exhausting works while playing Fate Grand Order. Suitable for Android devices. You'll find this project on <a href="https://github.com/McLaren12345/FGO_Bluetooth_Assistant" title="Github FGO Automation">Github</a>.
+            </p>
+        </div>
+        <div class="col last">
+            <h2>Like this project?</h2>
+            <p>If you liked this project, you might star it on <a href="https://github.com/McLaren12345/FGO_Bluetooth_Assistant" title="Github FGO Automation" target=“_blank”>Github</a> or sponsor the <a href="https://github.com/McLaren12345" title="sponsor author" target=“_blank”>author</a>.</p>
+        </div>
+        <div id="footer">
+            <p>Released under an <a href="https://opensource.org/licenses/MIT" target=“_blank”>MIT Licence</a></p>
+            <p>Copyright &copy; 2021 &minus; FGO Automation &minus; Design: <a href="https://github.com/McLaren12345" title="McLaren" target=“_blank”>McLaren</a></p>
+        </div><!-- end div #footer -->
+    </div><!-- end div .wrap -->
+</div><!-- end div .promo -->
+
+<div id="stacksNav">ToolBox</div>
+
+<!-- BEGIN STACK ============================================================ -->
+<div class="stack">
+    <img src="static/images/stacks/stack.png" alt="stack"/>
+    <ul id="stack">
+        <li><a href="https://github.com/McLaren12345/FGO_Bluetooth_Assistant" target=“_blank”><span>Github</span><img src="static/images/stacks/github.png" alt="Github" /></a></li>
+        <li><a href="about"><span>About</span><img src="static/images/stacks/about.png" alt="About"/></a></li>
+        <li><a href="tutorial"><span>Tutorial</span><img src="static/images/stacks/help.png" alt="Help"/></a></li>
+        <li><a href="setting"><span>Setting</span><img src="static/images/stacks/settings.png" alt="Setting"/></a></li>
+        <li><a href="index"><span>Index</span><img src="static/images/stacks/finder.png" alt="Finder"/></a></li>
+    </ul>
+</div><!-- end div .stack -->
+<!-- END STACK ============================================================ -->
+
+</body>
+</html>

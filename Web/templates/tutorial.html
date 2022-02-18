@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}FGO Automation Tutorial{% endblock %}
+{% block sub_title %}Tutorial Page{% endblock %}
+{% block my_css %}
+<link rel="stylesheet" href="static/css/menu.css">
+{% endblock %}
+{% block my_contentWrap %}
+<p><input type="checkbox" id="accordion-toggle"><label for="accordion-toggle">Auto-collapse unfocused dialog box.</label></p>
+
+		<div class="container collapse">
+            <details>
+                <summary>Quick start</summary>
+                <div class="details-wrapper">
+                    <div class="details-styling">
+                        <p>In the index page, you can easily choose the kind of task, like battle or friend point summon.
+                            Just press the create task button to create a task and then use start, pause, resume buttons
+                            to control task status. But do remember to correctly connect your android device and
+                            configure the system and battle script first before starting a task.</p>
+                    </div>
+                </div>
+            </details>
+            <details>
+                <summary>About docker and ToolBox</summary>
+                <div class="details-wrapper">
+                    <div class="details-styling">
+                        <p>The docker contains multiple icons link to all of the system pages and some of the useful and frequently visit website. It is also developed with amazing animation. You can easily jump to the webpage if necessary. </p>
+                        <p>The ToolBox is another useful function which let you jump to any system page through a Mac OSX like folder. just click the blanket to spread or collapse the inner icons. Trust me, you will be addictive to it.</p>
+                    </div>
+                </div>
+            </details>
+            <details>
+                <summary>Task event operation</summary>
+                <div class="details-wrapper">
+                    <div class="details-styling">
+                        <p>The task system on the index page presently supports two kinds of functions, the auto battle functionality according to self-defined battle script file, and friend point summon functionality.</p>
+                        <p>A task type should be firstly chosen in the selectBox, then register this task to the system by click create task button. A message box will be shown on the webpage to present the result. Then use start button to start task. lt is also possible to pause the task and resume it when in processing. When another task need to be created, do remember to stop the previous one, otherwise the create process cannot success.</p>
+                        <p>The auto battle functionality needs to configure the battle script before using. For details, see the Battle script operation part.</p>
+                    </div>
+                </div>
+            </details>
+            <details>
+                <summary>Modify system configuration</summary>
+                <div class="details-wrapper">
+                    <div class="details-styling">
+                        <p>the setting page manages all of the issues related to system configuration. You can set email notice information, battle preferences and edit battle script in this page. </p>
+                    </div>
+                </div>
+            </details>
+            <details>
+                <summary>Battle script operation</summary>
+                <div class="details-wrapper">
+                    <div class="details-styling">
+                        <p>Just use the well-designed battle script generator to create, edit, overwrite the script file. The battle script file is a JSON file which can be automatically phrased by the FGO battle engine. You cann also write the script file by yourself if you are skilled at JSON format, just put your file under FGO_func/Config/battle folder.</p>
+                    </div>
+                </div>
+            </details>
+        </div>
+
+        <script src='static/js/details-element-polyfill.js'></script>
+        <script src="static/js/menu.js"></script>
+        <!--			<p id="ad">Suspendisse egestas fringilla odio. Donec lacinia tristique ante. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam blandit ultricies nisl. Nullam dapibus, mauris id scelerisque feugiat, sapien augue porta ipsum, ut blandit tellus enim vel mauris. Praesent accumsan metus vel. </p>-->
+{% endblock %}

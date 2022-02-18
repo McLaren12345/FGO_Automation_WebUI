@@ -1,0 +1,164 @@
+
+/* Postfix and Prefix styling start here */
+.ppfix {
+  margin: 0;
+  vertical-align: top;
+  display: inline-block;
+  font-family: "Pontano Sans";
+  font-size: 0.8rem;
+  color: #343434;
+  min-width: 120px;
+  height: 12px;
+  background: #fbfbfb;
+  border: 1px solid #cccdcf;
+  padding: 8px 10px;
+  box-shadow: inset 0 2px 3px #e8e8e8;
+}
+
+  .ppfix:focus {
+    outline: none;
+  }
+
+  .pre {
+    margin: 3px 0 0 -5px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+  }
+
+    .prefix {
+    margin: 3px 0 0 0;
+      vertical-align: top;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      padding: 4px 6px;
+      background: #f2f2f2;
+      border: 1px solid #cccdcf;
+      /*border-right: 0;*/
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -moz-border-radius-topleft: 4px;
+      -moz-border-radius-bottomleft: 4px;
+      -webkit-border-top-left-radius: 4px;
+      -webkit-border-bottom-left-radius: 4px;
+    }
+
+.prefix {
+    font-family: FontAwesome;
+    line-height: 1.2rem;
+    font-size: 16px;
+    color: #737373;
+    text-align: center;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+.prefix.pre.file{width:130px;}
+
+span.prefix.plus, span.prefix.stop, span.prefix.start, span.prefix.pause {cursor: pointer;border-top-right-radius: 4px;
+      border-bottom-right-radius: 4px;padding: 7px 7px 7px 7px; border: 2px solid #737373; margin: 7px 5px 0 0;}
+
+span.prefix.start{margin: 7px 5px 0 8px;}
+span.prefix.stop{margin: 7px 8px 0 0px;}
+
+span.prefix.plus:before { content: "\f067";}
+span.prefix.stop:before { content: "\f04d"; }
+span.prefix.start:before { content: "\f04b";}
+span.prefix.pause:before { content: "\f04c";}
+span.prefix.file:before { content: "\f07c";}
+span.prefix.setting:before { content: "\f085";}
+/*.script_viewer{ color:#F33;}*/
+
+div.main_index {display: flex; margin: 10px 0 10px 0;}
+div.index.monitor{width: 220px; margin: 0 0 0 50px;}
+div.index.task{width: 250px;margin: 0 0 0 45px;}
+div.index.task2{width: 250px;margin: 0 0 0 45px;}
+div.gap{height:7px;}
+div.gap5{height:5px;}
+
+a#err_msg_content {width: 220px;display: inline-block;text-align: justify;word-wrap: break-word;overflow: hidden;}
+
+span.line{width:0px; border-left: 1.5px dashed #737373; margin: 7px 0 0 0;height:35px;display: inline-block;}
+
+.index_label{margin: 10px 0 5px 0; font-size:0.85rem;}
+
+div.info_div, .radio{margin:1px 0 3px 0}
+
+/*select#device_selector{height:30px; margin: 3px 0 0 0;background-color:#f2f2f2;border:1px solid #cccdcf; border-radius:4px;box-shadow: inset 1px 2px 3px #e8e8e8;}*/
+select#script_selector, select#servant_selector{height:30px; margin: 3px 0 0 -5px;background-color:#f2f2f2;border:1px solid #cccdcf; border-top-right-radius:4px;border-bottom-right-radius:4px;box-shadow: inset 1px 2px 3px #e8e8e8;}
+
+h2.index_slogan { font-size: 1.3em; color: #808080; }
+
+progress[value] {
+	/* Get rid of the default appearance */
+	-webkit-appearance: none;
+
+	/* This unfortunately leaves a trail of border behind in Firefox and Opera. We can remove that by setting the border to none. */
+	border: none;
+
+	/* Add dimensions */
+	width: 190px;
+	height: 15px;
+
+	/* Although firefox doesn't provide any additional pseudo class to style the progress element container, any style applied here works on the container. */
+	background-color: whiteSmoke;
+	border-radius: 3px;
+	box-shadow: 0 1px 3px rgba(0,0,0,.5) inset;
+
+	/* Of all IE, only IE10 supports progress element that too partially. It only allows to change the background-color of the progress value using the 'color' attribute. */
+	color: royalblue;
+	position: relative;
+	margin: 0 0 0.1em;
+}
+
+/*
+Webkit browsers provide two pseudo classes that can be use to style HTML5 progress element.
+-webkit-progress-bar -> To style the progress element container
+-webkit-progress-value -> To style the progress element value.
+*/
+
+progress[value]::-webkit-progress-bar {
+	background-color: whiteSmoke;
+	border-radius: 3px;
+	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+	position: relative;
+
+	background-size: 35px 20px, 100% 100%, 100% 100%;
+	border-radius:3px;
+
+}
+
+/* Let's spice up things little bit by using pseudo elements. */
+
+progress[value]::-webkit-progress-value:after {
+	/* Only webkit/blink browsers understand pseudo elements on pseudo classes. A rare phenomenon! */
+	content: '';
+	position: absolute;
+
+	width:5px; height:5px;
+	top:7px; right:7px;
+
+	background-color: white;
+	border-radius: 100%;
+}
+
+/* Firefox provides a single pseudo class to style the progress element value and not for container. -moz-progress-bar */
+
+progress[value]::-moz-progress-bar {
+	/* Gradient background with Stripes */
+	background-image:
+	-moz-linear-gradient( 135deg,transparent,transparent 33%,rgba(0,0,0,.1) 33%,rgba(0,0,0,.1) 66%,transparent 66%),
+    -moz-linear-gradient( top,rgba(255, 255, 255, .25),rgba(0,0,0,.2)),
+    -moz-linear-gradient( left, #09c, #f44);
+	background-size: 35px 20px, 100% 100%, 100% 100%;
+	border-radius:3px;
+
+	/* Firefox doesn't support CSS3 keyframe animations on progress element. Hence, we did not include animate-stripes in this code block */
+}

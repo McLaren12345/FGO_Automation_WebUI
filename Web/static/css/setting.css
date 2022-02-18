@@ -1,0 +1,110 @@
+/* Using Font Awesome - http://fortawesome.github.com/Font-Awesome
+@font-face {
+  font-family: "FontAwesome";
+  src: url('static/fonts/fontawesome-webfont-2.eot');
+  src: url('static/fonts/fontawesome-webfont-2.eot?#iefix') format('eot'), url('static/fonts/fontawesome-webfont-2.woff') format('woff'), url('static/fonts/fontawesome-webfont-2.ttf') format('truetype'), url('static/fonts/fontawesome-webfont.svg#FontAwesome') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}*/
+
+/* Postfix and Prefix styling start here */
+.ppfix {
+  margin: 0;
+  vertical-align: top;
+  display: inline-block;
+  font-family: "Pontano Sans";
+  font-size: 0.8rem;
+  color: #343434;
+  min-width: 150px;
+  height: 12px;
+  background: #fbfbfb;
+  border: 1px solid #cccdcf;
+  padding: 8px 10px;
+  box-shadow: inset 0 2px 3px #e8e8e8;
+}
+
+  .ppfix:focus {
+    outline: none;
+  }
+
+  .pre {
+    margin: 3px 0 0 -5px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -webkit-border-bottom-right-radius: 4px;
+  }
+
+    .prefix {
+    margin: 3px 0 0 0;
+      vertical-align: top;
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      padding: 4px 6px;
+      background: #f2f2f2;
+      border: 1px solid #cccdcf;
+      /*border-right: 0;*/
+      border-top-left-radius: 4px;
+      border-bottom-left-radius: 4px;
+      -moz-border-radius-topleft: 4px;
+      -moz-border-radius-bottomleft: 4px;
+      -webkit-border-top-left-radius: 4px;
+      -webkit-border-bottom-left-radius: 4px;
+    }
+
+.prefix {
+    font-family: FontAwesome;
+    line-height: 1.2rem;
+    font-size: 16px;
+    color: #737373;
+    text-align: center;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+.prefix.pre.file{width:130px;}
+
+span.prefix.email:before { content: "\f003";}
+span.prefix.key:before { content: "\f084";}
+span.prefix.file:before { content: "\f07c";}
+span.prefix.setting:before { content: "\f085";}
+/*.script_viewer{ color:#F33;}*/
+
+h2.setting_slogan { font-size: 1.3em; color: #808080; }
+
+div.main_setting{display: flex; margin: 10px 0 0 0;}
+div.setting.left{width:250px; }
+div.setting.center{width:325px;}
+div.setting.right{width:325px; }
+div.gap{height:7px;}
+div.gap5{height:5px;}
+
+.script_viewer {width:280px; font-size:0.8rem;}
+
+.setting_label{margin: 10px 0 5px 0; font-size:0.85rem;}
+
+select#device_selector{height:30px; margin: 3px 0 0 0;background-color:#f2f2f2;border:1px solid #cccdcf; border-radius:4px;box-shadow: inset 1px 2px 3px #e8e8e8;}
+select#mystic_code_selector, select#card_selector, select#script_selector{height:30px; margin: 3px 0 0 -5px;background-color:#f2f2f2;border:1px solid #cccdcf; border-top-right-radius:4px;border-bottom-right-radius:4px;box-shadow: inset 1px 2px 3px #e8e8e8;}
+
+.button{width:90px; height:30px;margin-top:5px;cursor:pointer;background-color:#f2f2f2;border:1px solid #cccdcf; border-radius:4px;text-align: center;text-decoration: none;box-shadow: inset 1px 2px 3px #e8e8e8;}
+.button.save{margin:3px 0 5px 5px;width:75px;}
+.button.delete{margin:0 5px 0 30px; color:#d01919; background-color:#fbfbfb;border:1px solid #d01919;}
+.button.connect, .button.submit {margin:0 0 0 20px}
+.button.undo, .button.add {margin:0 0 0 28px}
+.button.undo, .button.add, .button.reset {width:75px;}
+
+[type=checkbox] {margin: 1px 0 3px 0;cursor: pointer;}
+/*
+[type=checkbox]:focus {
+  outline: 2px solid #5b13ec;
+}
+*/
+[type=checkbox]:checked::before {
+  background: currentColor;
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+.checkbox.overwrite{margin:0 0 10px 0;}

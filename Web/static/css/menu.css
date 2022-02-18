@@ -1,0 +1,155 @@
+/*
+  Please wrap your collapsible content in a single element or so help me
+  Must add a transition or it breaks because that's the whole purpose of this
+  Only one transition-duration works (see explanation on line #141 in JS)
+  You can add more to an inner wrapper (.details-styling)
+*/
+.collapse-init summary + * {
+  transition: all 0.25s ease-in-out;
+  overflow: hidden;
+}
+
+/*
+  Closed state. Any CSS transitions work here
+  The JS has a height calculation to make sliding opened/closed easier, but it's not necessary
+  Remove the height prop for a simple toggle on/off (after all that work I did for you?)
+*/
+.collapse-init :not(.panel-active) summary + * {
+  height: 0;
+  opacity: 0;
+  -webkit-transform: scale(0.9);
+          transform: scale(0.9);
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+}
+
+.collapse-init summary {
+  list-style: none;
+}
+.collapse-init summary::-webkit-details-marker {
+  display: none;
+}
+.collapse-init summary::before {
+  display: none;
+}
+.collapse-init summary {
+  cursor: pointer;
+}
+
+/*
+  This element exists so .details-wrapper has no extra margin/padding that can screw with the smooth height collapse
+  You can style .details-wrapper decoratively but avoid anything that modifies the box and add it to .details-styling instead
+  Otherwise, this element is totally optional. Remove if you hate divitis
+*/
+.details-styling {
+  padding: 1em;
+}
+
+::-moz-selection {
+  background: #fbcb6a;
+  color: #4d4433;
+}
+
+::selection {
+  background: #fbcb6a;
+  color: #4d4433;
+}
+
+code {
+  background: rgba(232, 125, 143, 0.1);
+  color: #e96384;
+}
+
+abbr {
+  font-variant: small-caps;
+  text-transform: lowercase;
+  font-size: 1.2em;
+}
+
+[type=checkbox] {
+  opacity: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+[type=checkbox] + label {
+  background: #efe7fd;
+  cursor: pointer;
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: left;
+  transition: 0.1s;
+  padding: 0.5em 0.5em;
+  margin: 1em 0;
+  border-radius: 6px 6px 6px 6px;
+}
+[type=checkbox] + label::before {
+  border: 2px solid;
+  border-radius: 2px;
+  color: #5b13ec;
+  content: '';
+  display: inline-block;
+  margin-right: 0.75ch;
+  transition: 0.1s;
+  width: 1ch;
+  height: 1ch;
+  vertical-align: baseline;
+}
+[type=checkbox]:focus + label {
+  outline: 2px solid #5b13ec;
+}
+[type=checkbox]:checked + label::before {
+  background: currentColor;
+  box-shadow: inset 0 0 0 1px #fff;
+}
+
+.container {
+  box-shadow: 0.2em 1em 2em -1em #d6d1e0;
+  margin: 1em 0;
+}
+
+details {
+  background: #fff;
+  border: 1px solid #d6d1e0;
+  border-bottom: 0;
+  list-style: none;
+}
+details:first-child {
+  border-radius: 6px 6px 0 0;
+}
+details:last-child {
+  border-bottom: 1px solid #d6d1e0;
+  border-radius: 0 0 6px 6px;
+}
+
+summary {
+  display: block;
+  transition: 0.2s;
+  font-weight: 700;
+  padding: 1em;
+}
+summary:focus {
+  outline: 2px solid #5b13ec;
+}
+.collapse-init summary::after {
+  border-right: 2px solid;
+  border-bottom: 2px solid;
+  content: '';
+  float: right;
+  width: 0.5em;
+  height: 0.5em;
+  margin-top: 0.25em;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  transition: inherit;
+}
+[open] summary {
+  background: #5b13ec;
+  color: #f8f5fe;
+}
+[open] summary::after {
+  margin-top: 0.5em;
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
+}

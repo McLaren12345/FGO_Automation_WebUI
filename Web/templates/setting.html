@@ -1,0 +1,199 @@
+{% extends "base.html" %}
+{% block title %}FGO Automation Setting{% endblock %}
+{% block sub_title %}Setting{% endblock %}
+{% block my_css %}
+<link href="static/css/msgbox.css" rel="stylesheet">
+<link href="static/css/setting.css" rel="stylesheet">
+{% endblock %}
+{% block my_contentWrap %}
+<div class="main_setting">
+<div class="setting left">
+    <h2 class="setting_slogan" id="slogan">
+        System Setting
+    </h2>
+    <fieldset>
+
+        <strong class="setting_label">Emulator Configuration</strong>
+        <div class="gap5"></div>
+        <section>
+            <label class="label">Choose device:</label>
+            <label class="select"><select class="selector" id="device_selector" style="width: 113px;"></select></label>
+        </section>
+        <section>
+            <button class="button refresh" type="button" onclick="init_selector(1)" title="Refresh device list.">Refresh</button>
+            <button class="button connect" type="button" onclick="connect_device_func()" title="Connect selected device.">Connect</button>
+        </section>
+    </fieldset>
+<form  id="setting">
+    <fieldset>
+        <div class="gap"></div>
+        <strong class="setting_label">Email Configuration</strong>
+        <div class="gap5"></div>
+        <section>
+            <label class="checkbox"><input type="checkbox" name="checkbox" checked="" id="email_enable"> Enable email notice</label>
+        </section>
+        <section>
+            <span class="prefix email"></span>
+            <label class="input"><input placeholder="Email address" data-for="prefix" class="ppfix pre email" type="text" id="email_address" title="Your email address here." oninput="email_validation()"></label>
+            <div id="email_validation"></div>
+            <div>Note: only QQ mail supported now.</div>
+        </section>
+        <section>
+            <span class="prefix key"></span>
+            <label class="input"><input placeholder="Email access key" data-for="prefix" class="ppfix pre key" type="password" id="email_password" onselectstart="return false" title="Your POP3/SMTP key here."></label>
+            <div>What is <a href="https://service.mail.qq.com/cgi-bin/help?subtype=1&&no=1001256&&id=28" target="_blank">POP3/SMTP key</a> ?</div>
+        </section>
+    </fieldset>
+    <fieldset>
+        <div class="gap"></div>
+        <strong class="setting_label">AP recover</strong>
+        <div class="gap5"></div>
+        <section>
+            <div>
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked="" id="crystal_stone"> Saint Quartz (Not recommend)</label><br>
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked="" id="gold_apple"> Golden Fruit</label><br>
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked="" id="silver_apple"> Silver Fruit</label><br>
+                <label class="checkbox"><input type="checkbox" name="checkbox" checked="" id="bronze_apple" disabled> Bronze Fruit (Unavailable)</label>
+            </div>
+        </section>
+    </fieldset>
+</form>
+    <fieldset>
+        <button class="button test_email" type="button" onclick="test_email_func()" title="Send a test mail to specified email.">Test email</button>
+        <button class="button submit" type="button" onclick="submit_func()" title="Update setting.">Update</button>
+    </fieldset>
+</div>
+<div class="setting center">
+    <h2 class="setting_slogan" id="slogan1">
+        Battle Script Definer
+    </h2>
+    <form id="battle">
+        <fieldset>
+            <section>
+                <textarea class="script_viewer" rows="10" style="resize:none;" id="script_viewer" disabled></textarea>
+            </section>
+            <div>Note: new script content can be previewed here.</div>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="setting_label">Choose mystic code:</strong>
+<!--            <div class="gap5"></div>-->
+            <section>
+                <span class="prefix setting"></span>
+                <label class="select">
+                    <select class="selector mystic_code" id="mystic_code_selector" onchange="mystic_code_on_change()" style="width: 172px;">
+                        <option value = "chaldea" >Chaldea</option>
+                        <option value = "mages_association_uniform" >Mage's Association Uniform</option>
+                        <option value = "atlas_institute_uniform" >Atlas Institute Uniform</option>
+                        <option value = "chaldea_combat_uniform" >Chaldea combat uniform</option>
+                        <option value = "anniversary_blonde" >Anniversary Blonde</option>
+                        <option value = "royal_brand" >Royal Brand</option>
+                        <option value = "brilliant_summer" >Brilliant Summer</option>
+                        <option value = "memories_of_a_lunar_sea" >Memories of a Lunar Sea</option>
+                        <option value = "memories_of_the_far_side_of_the_moon" >Memories of the Far Side of the Moon</option>
+                        <option value = "fragments_of_year_2004" >Fragments of Year 2004</option>
+                        <option value = "chaldea_uniform_arctic" >Chaldea Uniform - Arctic</option>
+                        <option value = "tropical_summer" >Tropical summer</option>
+                        <option value = "splendid_new_year" >Splendid New Year</option>
+                        <option value = "chaldea_uniform_true_ether" >Chaldea Uniform - True Ether</option>
+                        <option value = "captain_chaldea" >Captain Chaldea</option>
+                        <option value = "chaldea_pathfinder" >Chaldea Pathfinder</option>
+                        <option value = "halloween_royalty" >Halloween Royalty</option>
+                    </select>
+                </label>
+            </section>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="setting_label">Character skill:</strong>
+            <section>
+                <span class="prefix setting"></span>
+                <label class="input"><input placeholder="Character skill" data-for="prefix" class="ppfix pre" type="text" id="character_skill" title="list of list, e.g. [[1, 2], [2, 2, 3]] means in this turn, first servant's second skill will be pressed and second servant's second skill will be implemented on the third servant. If no skill need to press, keep it blank."></label>
+            </section>
+            <div>Note: MouseOver to see format detail</div>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="setting_label">Master skill:</strong>
+            <section>
+                <span class="prefix setting"></span>
+                <label class="input"><input placeholder="Master skill" data-for="prefix" class="ppfix pre" type="text" id="master_skill" title="list of list, e.g. [[1], [2, 2], [3, 2, 3]] means in this turn, master's first skill will be pressed, the second skill will be implemented on the second servant. If mystic code is chaldea combat uniform, change order using [3, a, b], where a refers to the index of the front servant to be put back, b refers to the index of the back servant to be put forward. If no skill need to press, keep it blank."></label>
+            </section>
+            <div>Note: MouseOver to see format detail</div>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="setting_label">Whose noble phantasm to release:</strong>
+<!--            <div class="gap5"></div>-->
+            <section>
+                <span class="prefix setting"></span>
+                <label class="select">
+                    <select class="selector card" id="card_selector">
+                        <option value = 1 >First servant</option>
+                        <option value = 2 >Second servant</option>
+                        <option value = 3 >Third servant</option>
+                    </select>
+                </label>
+            </section>
+        </fieldset>
+    </form>
+    <fieldset>
+        <div class="gap"></div>
+        <strong class="setting_label">Operate battle script:</strong>
+        <section>
+            <button class="button reset" type="button" onclick="reset_script()" title="Reset the current script with default template.">Reset</button>
+            <button class="button undo" type="button" onclick="undo_script()" title="Delete last turn.">Undo</button>
+            <button class="button add" type="button" onclick="add_to_script()" title="Add skill and card strategy to current script.">Add</button>
+        </section>
+    </fieldset>
+    <fieldset>
+        <div class="gap"></div>
+        <strong class="setting_label">Enter script file name:</strong>
+        <section>
+            <span class="prefix file"></span>
+            <label class="input"><input placeholder="Script name" data-for="prefix" class="ppfix pre file" type="text" id="script_name"></label>
+            <button class="button save" type="button" onclick="save_script()" title="Save current battle script.">Save</button>
+        </section>
+        <section>
+            <label class="checkbox"><input class="checkbox overwrite" type="checkbox" name="checkbox" id="Force_overwrite"> Force overwrite</label>
+        </section>
+    </fieldset>
+</div>
+    <div class="setting right">
+        <h2 class="setting_slogan">
+        Battle Script Previewer
+    </h2>
+    <form>
+        <fieldset>
+            <section>
+                <textarea class="script_viewer" rows="10" style="resize:none;" id="script_viewer2" disabled></textarea>
+            </section>
+            <div>Note: Selected script content can be previewed here.</div>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <section>
+                <textarea class="script_viewer" rows="8" style="resize:none;" id="script_viewer3" disabled></textarea>
+            </section>
+            <div>Note: Phrased script content can be previewed here.</div>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="setting_label">Choose script file to preview:</strong>
+            <section>
+                <span class="prefix file"></span>
+                <label class="select">
+                    <select class="selector" id="script_selector" onchange="preview_script_on_change()" style="width: 133px;">
+                    </select>
+                </label>
+                <button class="button delete" type="button" onclick="confirm_del()" title="Delete this script.">Delete</button>
+            </section>
+        </fieldset>
+    </form>
+    </div>
+</div>
+
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/hullabaloo.js"></script>
+<script src="static/js/setting.js"></script>
+{% endblock %}

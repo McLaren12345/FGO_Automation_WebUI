@@ -1,0 +1,9 @@
+{
+  "email_notice": true,
+  "email": "",
+  "passwd": "",
+  "use_Crystal_stone": false,
+  "use_Gold_apple": true,
+  "use_Silver_apple": true,
+  "use_Bronze_apple": false
+}

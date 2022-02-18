@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% block title %}FGO Automation HomePage{% endblock %}
+{% block sub_title %}HomePage{% endblock %}
+{% block my_css %}
+<link href="static/css/msgbox.css" rel="stylesheet">
+<link href="static/css/index.css" rel="stylesheet">
+{% endblock %}
+{% block my_contentWrap %}
+<div class="main_index">
+    <div class="index monitor">
+        <h2 class="index_slogan">
+            Status monitor
+        </h2>
+        <fieldset>
+            <strong class="index_label">System status</strong>
+            <section>
+                <div class="info_div">
+                    <label class="info">Current device: </label>
+                    <label class="info" id="current_device"></label>
+                </div>
+                <div class="info_div">
+                    <label class="info">Device status: </label>
+                    <label class="info" id="device_status"></label>
+                </div>
+            </section>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="index_label">Task status</strong>
+            <section>
+                <div class="info_div">
+                    <label class="info">Task type: </label>
+                    <label class="info" id="task_type"></label>
+                </div>
+                <div class="info_div">
+                    <label class="info">Task status: </label>
+                    <label class="info" id="task_status"></label>
+                </div>
+                <div class="info_div">
+                    <label class="info" id="err_msg">Error Message: </label>
+                    <a id="err_msg_content"></a>
+                </div>
+            </section>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="index_label">Task info</strong>
+            <section>
+                <div class="info_div">
+                    <label class="info">Craft dropped: </label>
+                    <label class="info" id="craft_drop_num"></label>
+                </div>
+                <div class="info_div">
+                    <label class="info">Saint Quartz used: </label>
+                    <label class="info" id="crystal_stone_used"></label>
+                </div>
+                <div class="info_div">
+                    <label class="info">Golden Fruit used: </label>
+                    <label class="info" id="gold_apple_used"></label>
+                </div>
+                <div class="info_div">
+                    <label class="info">Silver Fruit used: </label>
+                    <label class="info" id="silver_apple_used"></label>
+                </div>
+                <div class="info_div">
+                    <label class="info">Bronze Fruit used: </label>
+                    <label class="info" id="bronze_apple_used"></label>
+                </div>
+            </section>
+        </fieldset>
+    </div>
+    <div class="index task">
+        <h2 class="index_slogan">
+            Task definer
+        </h2>
+        <fieldset>
+            <strong class="index_label">Choose task type</strong>
+            <section>
+            <div class="info_div">
+                <label class="radio"><input type="radio" name="radio" checked="" value="battle" onclick="battle_on_click()"> Battle</label><br>
+            </div>
+            <div class="info_div">
+                <label class="radio"><input type="radio" name="radio" checked="" value="summon" onclick="friend_point_summon_on_click()"> Friend point summon</label>
+            </div>
+            </section>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="index_label">Choose battle script</strong>
+            <section>
+                <span class="prefix file"></span>
+                <label class="select">
+                    <select class="selector" id="script_selector" onclick="" style="width: 150px;" title="Choose battle script.">
+                    </select>
+                </label>
+            </section>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="index_label">Choose support servant</strong>
+            <section>
+                <span class="prefix setting"></span>
+                <label class="select">
+                    <select class="selector servant" id="servant_selector" style="width: 150px;" title="Choose support servant.">
+                        <option value = "Caster_Altria" >Artoria (Caster)</option>
+                        <option value = "CBA" >Scáthach-Skadi</option>
+                        <option value = "KM" >Zhuge Liang (Lord El-Melloi II)</option>
+                    </select>
+                </label>
+            </section>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="index_label">Enter battle times</strong>
+            <section>
+            <span class="prefix setting"></span>
+            <label class="input"><input placeholder="Battle times" data-for="prefix" class="ppfix pre setting" type="number" min="1" value="1" id="battle_times" title="Enter battle times here." style="width: 130px"></label>
+        </section>
+        </fieldset>
+    </div>
+    <div class="index task2 ">
+        <h2 class="index_slogan">Task controller</h2>
+        <fieldset>
+            <strong class="index_label">Task operation area</strong>
+            <section>
+                <div class="info_div">
+                    <span class="prefix plus" onclick="create_task()" title="Create a task."></span>
+                    <span class="prefix stop" onclick="stop_task()" title="terminate current task."></span>
+                    <span class="line"></span>
+                    <span class="prefix start" onclick="start_task()" id="start_button" title="Start or resume current task."></span>
+                    <span class="prefix pause" onclick="pause_task()" id="pause_button" title="Pause current task."></span>
+                </div>
+            </section>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="index_label">Battle schedule</strong>
+            <section>
+                <div class="info_div">
+                    <label class="info">Battle finished: </label>
+                    <label class="info" id="battle_finished">3/10</label>
+                </div>
+                <progress value="50" max="100" id="process_bar"></progress>
+            </section>
+        </fieldset>
+        <fieldset>
+            <div class="gap"></div>
+            <strong class="index_label">Time usage analysis</strong>
+            <section>
+                <div class="info_div">
+                    <label class="info">Time usage per battle: </label>
+                    <label class="info" id="last_battle_time_usage">3</label>
+                </div>
+                <div class="info_div">
+                    <label class="info">Remaining time: </label>
+                    <label class="info" id="time_remaining">3</label>
+                </div>
+            </section>
+        </fieldset>
+    </div>
+</div>
+
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/hullabaloo.js"></script>
+<script src="static/js/index.js"></script>
+{% endblock %}
