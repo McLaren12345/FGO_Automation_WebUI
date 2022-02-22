@@ -116,9 +116,9 @@ def match_template(filename: str, show_switch=False, threshold=0.85):
 def touch(x_position: int, y_position: int, times=1, interval=0.5, zoom=False):
     for i in range(times):
         if not zoom:
-            device.dev.touch_proxy.touch((x_position, y_position))
+            device.dev.touch((x_position, y_position))
         else:
-            device.dev.touch_proxy.touch(
+            device.dev.touch(
                 (int(x_position * device.global_zoom_coefficient), int(y_position * device.global_zoom_coefficient)))
         time.sleep(interval)
 
@@ -126,8 +126,8 @@ def touch(x_position: int, y_position: int, times=1, interval=0.5, zoom=False):
 @EnableFgoPause
 def touch_button(position: tuple, times=1, interval=0.5):
     for i in range(times):
-        device.dev.touch_proxy.touch((int(position[0] * device.global_zoom_coefficient),
-                                      int(position[1] * device.global_zoom_coefficient)))
+        device.dev.touch((int(position[0] * device.global_zoom_coefficient),
+                          int(position[1] * device.global_zoom_coefficient)))
         time.sleep(interval)
 
 

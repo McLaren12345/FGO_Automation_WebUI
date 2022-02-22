@@ -5,10 +5,14 @@ Created on Sat Dec 14 10:51:36 2019
 @author: McLaren
 """
 
-from flask import Flask, render_template
+from flask import Flask, redirect, render_template
 from Web import service
 
 app = Flask(__name__)
+
+@app.route('/')
+def root():
+    return redirect('/index')
 
 
 @app.route('/<page_name>', methods=['GET'])

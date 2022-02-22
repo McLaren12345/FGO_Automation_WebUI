@@ -7,12 +7,13 @@ Created on Fri Jan 17 10:08:29 2020
 
 import Web.FGO_func.Config.FgoConfig as gc
 import smtplib
+from typing import Tuple
 from email.mime.text import MIMEText
 
 subject = "FGO脚本提示信息"  # 主题
 
 
-def config_check() -> (bool, str):
+def config_check() -> Tuple[bool, str]:
     if not gc.email_notice:
         return False, "Email notice functionality is not enabled."
     elif gc.email == "" or gc.passwd == "":
